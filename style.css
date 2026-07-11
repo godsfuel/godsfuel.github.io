@@ -1,17 +1,15 @@
-/* Logo Styling - Corrected for sizing */
-.logo-header { background-color: #ffffff; padding: 20px 0; text-align: center; }
-.header-logo { 
-    max-width: 300px; 
-    width: 100%; 
-    height: auto; 
-    display: block; 
-    margin: 0 auto; 
-}
+/* [Keep all your original content here] */
 
-/* Master Styling */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: sans-serif; line-height: 1.6; background-color: #f5f6fa; }
-.container { max-width: 850px; margin: 0 auto; padding: 0 20px; }
-.card { background: #ffffff; padding: 35px; border-radius: 8px; border: 1px solid #dcdde1; margin-top: 30px; }
-.lead-image-wrapper { margin: 25px auto; max-width: 550px; text-align: center; }
-.main-belt-img { width: 100%; height: auto; border: 1px solid #b2bec3; }
+/* Logo addition */
+.logo-header {
+    background-color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+.header-logo {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
