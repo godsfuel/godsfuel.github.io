@@ -9,8 +9,7 @@
 <body>
     <header class="hero-banner corporate-header">
         <div class="hero-container">
-            <img src="bounce-logo-purple.png" alt="BOUNCE Safety Systems Corporate Logo" style="max-width: 300px; margin-bottom: 20px;">
-            <h1>Bounce Safety Systems LLC</h1>
+            <img src="bounce-logo-purple.png" alt="BOUNCE Safety Systems Corporate Logo" style="max-width: 500px; margin-bottom: 30px;">
             <p class="stat-highlight">Over 43,000 deaths,</p>
             <p class="stat-highlight">over 3,000,000 hospital emergency room visits,</p>
             <p class="stat-highlight">over 1,000,000 hospital admissions,</p>
@@ -46,8 +45,47 @@
             <ul>
                 <li><strong>The Leading Killer:</strong> For Americans aged 65 and older, falls are the number one cause of injury-related death—outranking motor vehicle accidents and firearms combined. Every year, over 43,000 older Americans lose their lives to a fall.</li>
                 <li><strong>The Financial Bleed:</strong> Non-fatal falls, hospital admissions, over 3 million annually, inflict an astronomical $80 billion annual drain on the U.S. healthcare system. Much of this burden ($53.3 billion) is borne directly by taxpayers through Medicare and the VA.</li>
-                <li><strong>The Post-Admission Clock:</strong> A single serious fall triggers an acute hospital stay averaging 5.5 to 7.3 days, ballooning to nearly 10 days for hip fractures.</li>
+                <li><strong>The Post-Admission Clock:</strong> A single serious fall triggers an acute hospital stay averaging 5.5 to 7.3 days, ballooning to nearly 10 days for hip fractures. If a veteran experiences institutional delays waiting for an open bed at a skilled nursing facility, that stay skyrockets to an average of 26.3 days, costing upwards of $70,000 per event.</li>
             </ul>
+        </section>
+        <section class="card standard-card" style="border-top: 4px solid #e84118;">
+            <h2>The Post-Fall Trap</h2>
+            <p>Existing market solutions are entirely reactive. Post-fall pendants and wall-mounted buttons do absolutely nothing to prevent the initial physical trauma—they simply alert emergency services after the damage is done.</p>
+            <p>When a hip fracture occurs, a person’s life trajectory changes permanently:</p>
+            <ul>
+                <li><strong>The 1-Year Mortality Window:</strong> A hip fracture is a massive, systemic trauma. The one-year mortality rate sits between 15% and 30%.</li>
+                <li><strong>Loss of Autonomy:</strong> Fewer than half of all hip fracture survivors ever regain their pre-fall functional independence. Over 50% plunge into permanent dependence on caregivers, and the odds of requiring long-term nursing home placement surge 3.8 to 4.5-fold.</li>
+                <li><strong>The Fear-of-Falling Cycle:</strong> Even a non-injurious fall triggers a psychological trauma loop. The resulting fear causes elders to naturally restrict their mobility, accelerating muscle wasting (sarcopenia), worsening their balance, and ironically doubling the probability of a subsequent fall.</li>
+            </ul>
+        </section>
+        <section class="card standard-card" style="border-top: 4px solid #3d1d5a;">
+            <h2>Our Approach: Pre-Impact Defiance</h2>
+            <p>BOUNCE™ is built around a disruptive paradigm: Protection must adapt to people—not the other way around. In a real-world fall, ground impact occurs in a brutal 1/3 to 1/2 of a second (300 to 500 milliseconds). To potentially save a life, protection must fully deploy in under 1/3 of a second. BOUNCE™ shatters this limitation.</p>
+            <p>Operating at an ultra-high-speed telemetry rate of 1,600 Hz, our advanced hardware utilizes a Triple Modular Redundancy (TMR) sensor architecture. Three independent IMUs continuously stream 6-axis kinematic data to a high-performance STM32 microcontroller via high-speed SPI lines. It’s designed and in prototyping now. The firmware implements a strict 2-of-3 voting system.</p>
+            <div class="architecture-note">
+                <p><strong>[System Architecture Note]:</strong> By processing data 1,600 times per second across three redundant sensor paths, the system filters out structural noise and normal daily activities (like sitting or bending) with absolute fault-tolerant precision. It detects the exact millisecond an unrecoverable fall trajectory begins, finalizing the deployment command within 15 milliseconds of fall onset.</p>
+            </div>
+            <p>With a total system response time clocking in under 150 milliseconds, the system commands a high-reliability firing circuit to execute a phased, multi-stage deployment sequence well before ground impact.</p>
+        </section>
+        <section class="card gallery-card">
+            <h2>BOUNCE™ In Action: Physical Prototyping & Deployment</h2>
+            <p>Below is the physical reality of the BOUNCE™ wearable system executing its automated protection array.</p>
+            <div class="lead-image-wrapper">
+                <img src="belt-wearer.jpg" alt="BOUNCE Personal Protection Belt Integration" class="hardware-image main-belt-img">
+                <p class="image-caption">Figure 1.0: Low-profile, lightweight chassis configuration designed for daily wear mobility.</p>
+            </div>
+        </section>
+        <section class="card corporate-card">
+            <h2>From Conception to Fabrication-Ready in 5 Months</h2>
+            <p>We didn't waste time. From the initial concept following my father's Christmas Eve fall to a finished, 100% production-ready hardware design took less than five months. Utilizing advanced modern ECAD tools, he designed, routed, and finalized a highly dense, professional-grade printed circuit board (PCB) that balances sensitive micro-volt telemetry paths with high-reliability triggering loops.</p>
+            <div class="button-container" style="margin: 20px 0;">
+                <a href="technical.html" class="action-button">Examine Circuit Layout & Hardware Metrics &rarr;</a>
+            </div>
+            <p>The manufacturing files are locked down. We aren't guessing if the hardware can be built; it is sitting on our drives ready for fabrication today. We are simply raising the funds to manufacture our physical pilot units and move directly into testing.</p>
+        </section>
+        <section class="card readiness-card">
+            <p class="motto">We are protecting veterans and seniors as they live their lives. Reliably first. Dignity always.</p>
+            <p class="signature"><strong>Floyd "Rick" Lawrence</strong><br><span class="title-sub">Inventor of BOUNCE™</span></p>
         </section>
     </main>
     <footer>
