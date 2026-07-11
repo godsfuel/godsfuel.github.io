@@ -1,69 +1,194 @@
-/* Base Styles */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-    line-height: 1.6; 
-    background-color: #f5f6fa; 
-    color: #2f3640; 
-}
-.container { max-width: 850px; margin: 0 auto; padding: 0 20px; }
-
-/* Logo Header */
-.logo-header { background: #ffffff; padding: 30px 0; text-align: center; }
-.logo-img { width: 75%; max-width: 640px; height: auto; display: block; margin: 0 auto; }
-
-/* Hero Section */
-.hero-banner { 
-    background: #ffffff; 
-    border-bottom: 5px solid #e84118; 
-    padding: 70px 20px; 
-    text-align: center; 
-}
-.hero-container { max-width: 750px; margin: 0 auto; }
-.stat-highlight { color: #2f3640; font-size: 1.4rem; font-weight: 600; margin-bottom: 4px; }
-.stat-location { color: #2f3640; font-size: 1.3rem; font-weight: 700; margin-top: 15px; }
-.stat-time { color: #2f3640; font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; }
-.stat-cause { color: #e84118; font-size: 2.2rem; font-weight: 900; margin-bottom: 25px; }
-.suffering-note { color: #718093; font-size: 1.15rem; font-style: italic; margin-bottom: 35px; }
-.mission-statement h2 { 
-    color: #ffffff; 
-    background-color: #e84118; 
-    padding: 14px 40px; 
-    border-radius: 6px; 
-    display: inline-block; 
+/* Master Styling for Homepage, Technical, and Corporate Layouts */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-/* Navigation */
-.site-nav { padding: 20px 0; background: #f5f6fa; }
-.nav-box { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-.nav-link-btn { 
-    background: #2f3640; 
-    color: #ffffff; 
-    padding: 10px 20px; 
-    text-decoration: none; 
-    border-radius: 4px; 
-    font-weight: 600; 
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f6fa;
+    color: #2f3640;
 }
 
-/* Cards & Content */
-.card { background: #ffffff; padding: 30px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-h2 { color: #2f3640; margin-bottom: 15px; }
-.meta-author { font-style: italic; color: #718093; margin-bottom: 15px; }
-.architecture-note { background: #fdf2f2; border-left: 4px solid #e84118; padding: 15px; margin: 20px 0; }
-.lead-image-wrapper { margin: 20px 0; text-align: center; }
-.main-belt-img { max-width: 100%; height: auto; border-radius: 4px; }
-.image-caption { font-size: 0.9rem; color: #57606f; margin-top: 8px; }
-
-/* Buttons & Footer */
-.action-button { 
-    display: inline-block; 
-    background: #e84118; 
-    color: #ffffff; 
-    padding: 15px 30px; 
-    text-decoration: none; 
-    border-radius: 6px; 
-    font-weight: bold; 
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
-.readiness-card { text-align: center; border-top: 4px solid #2f3640; }
-.signature { margin-top: 20px; font-size: 1.1rem; }
-footer { padding: 40px 0; text-align: center; color: #718093; font-size: 0.9rem; }
+
+/* White High-Impact Header */
+.hero-banner {
+    background: #ffffff;
+    color: #2f3640;
+    text-align: center;
+    padding: 70px 20px;
+    border-bottom: 5px solid #e84118;
+}
+
+.technical-header {
+    padding: 40px 20px;
+    border-bottom: 5px solid #718093;
+}
+
+.hero-container {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.hero-banner h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+}
+
+.stat-highlight { font-size: 1.4rem; font-weight: 600; margin-bottom: 4px; color: #2f3640; }
+.stat-location { font-size: 1.3rem; font-weight: 700; margin-top: 15px; color: #2f3640; }
+.stat-time { font-size: 1.6rem; font-weight: 800; color: #2f3640; margin-bottom: 4px; }
+.stat-cause { font-size: 2.2rem; font-weight: 900; color: #e84118; margin-bottom: 25px; letter-spacing: 1px; }
+.suffering-note { font-size: 1.15rem; font-style: italic; color: #718093; margin-bottom: 35px; }
+
+/* RE-ENGINEERED MISSION LINE: Maximum visibility shield */
+.mission-statement h2 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #ffffff;
+    background-color: #e84118;
+    padding: 14px 40px;
+    border-radius: 6px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 2px solid #ffffff;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+}
+
+/* Site Directory Submenu Navigation Bar */
+.site-nav {
+    background: #1e2025;
+    padding: 15px 0;
+    border-bottom: 1px solid #dcdde1;
+}
+
+.nav-box {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav-link-btn {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 4px;
+}
+
+.nav-link-btn:hover {
+    color: #f1c40f;
+    border-bottom: 2px solid #f1c40f;
+}
+
+/* Layout Cards */
+.card {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 8px;
+    border: 1px solid #dcdde1;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    margin-top: 30px;
+}
+
+.story-card { border-top: 4px solid #3d1d5a; }
+.corporate-card { border-top: 4px solid #718093; }
+
+h2 {
+    color: #1c2025;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-left: 4px solid #e84118;
+    padding-left: 12px;
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: #1c2025;
+    margin: 25px 0 15px 0;
+}
+
+.timeline-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-bottom: 2px solid #edf2f7;
+    padding-bottom: 10px;
+    margin: 30px 0 15px 0;
+    text-align: center;
+    color: #3d1d5a;
+}
+
+.meta-author { font-style: italic; color: #718093; margin-top: -15px; margin-bottom: 20px; font-size: 0.95rem; }
+p { font-size: 1.1rem; margin-bottom: 18px; color: #2f3640; }
+ul { margin-bottom: 20px; padding-left: 20px; }
+ul li { font-size: 1.05rem; margin-bottom: 12px; color: #353b48; }
+
+.lead-image-wrapper {
+    margin: 25px auto;
+    max-width: 550px;
+    text-align: center;
+    background: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #dcdde1;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.main-belt-img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border: 1px solid #b2bec3;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
+.image-caption {
+    font-size: 1rem;
+    color: #2f3640;
+    margin-top: 12px;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+.architecture-note {
+    background-color: #f8f9fa;
+    border-left: 4px solid #718093;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.button-container { text-align: center; margin: 35px 0; }
+.action-button {
+    display: inline-block;
+    background-color: #3d1d5a;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 700;
+    padding: 16px 40px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.signature { text-align: right; font-size: 1.15rem; border-top: 1px solid #dcdde1; padding-top: 15px; }
+.title-sub { font-size: 0.95rem; color: #718093; }
+footer { text-align: center; padding: 50px 0; color: #718093; font-size: 0.9rem; }
+
+@media (max-width: 700px) {
+    .nav-box { flex-direction: column; align-items: center; gap: 15px; }
+    .mission-statement h2 { font-size: 1.6rem; padding: 10px 20px; }
+}
