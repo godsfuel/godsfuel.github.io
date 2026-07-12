@@ -68,11 +68,11 @@ F    font-size: 2.6rem;
 
 /* Site Directory Submenu Navigation Bar */
 .site-nav {
-    background: #1e2025;
+	background: #1e2025;
     padding: 15px 0;
-    border-top: 3px solid #e84118; /* Thin red line on top */
+    width: 100%;             /* Ensures it hits both sides of the screen */
+    border-top: 5px solid #e84118; /* The thick red line you described */
     border-bottom: 1px solid #dcdde1;
-    width: 100%; /* Ensures it spans full width */
 }
 
 .nav-box {
