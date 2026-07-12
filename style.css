@@ -256,3 +256,19 @@ footer { text-align: center; padding: 50px 0; color: #718093; font-size: 0.9rem;
     background-color: #e84118;
     border-color: #e84118;
 }
+
+/* This moves the entire header up by reducing the top padding */
+.hero-banner {
+    padding-top: 20px !important;
+}
+
+/* This pulls the logo higher (negative margin) and shrinks the gap below it */
+.hero-logo {
+    margin-top: -40px; 
+    margin-bottom: 5px; 
+}
+
+/* This increases the black bar height for the buttons */
+.site-nav {
+    padding: 25px 0; 
+}
