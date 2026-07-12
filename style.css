@@ -212,37 +212,40 @@ footer { text-align: center; padding: 50px 0; color: #718093; font-size: 0.9rem;
 }
 /* Logo Styling */
 .hero-logo {
-max-width: 100%;        /* Safe starting point */
+    max-width: 100%;
     height: auto;
     display: block;
     margin: 0 auto 25px auto;
 }
+
 .subtitle {
     margin: 15px 0 20px 0;
     font-weight: 700;
 }
+
 /* Technical Page Header Fixes */
 .technical-header {
-    background: #ffffff;           /* White/light background */
-    color: #2f3640;                /* Dark text */
+    background: #ffffff;
+    color: #2f3640;
     padding: 50px 20px 40px;
-    border-bottom: 5px solid #718093;   /* Keep your blue bar */
+    border-bottom: 5px solid #718093;
     text-align: center;
 }
 
 .technical-header .subtitle {
-    color: #e84118 !important;     /* Orange/red for the subtitle */
-    font-size: 1.55rem;
+    color: #e84118 !important;
+    font-size: 2.9rem;
     font-weight: 700;
     margin: 15px 0 25px 0;
 }
 
 .technical-header .hero-logo {
-    max-width: 80%;
+    max-width: 100%;
+    width: 600px;
     margin-bottom: 25px;
 }
 
-/* Make sure buttons are visible */
+/* Action Buttons */
 .action-button.secondary-btn {
     background-color: #34495e;
     color: #ffffff;
