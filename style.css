@@ -269,7 +269,7 @@ footer { text-align: center; padding: 50px 0; color: #718093; font-size: 0.9rem;
 }
 
 .subtitle {
-    margin-top: -50px !important;     /* Removes the gap pushing the text down */
+    margin-top: 0px !important;     /* Removes the gap pushing the text down */
 }
 
 /* Navigation Bar Heft */
