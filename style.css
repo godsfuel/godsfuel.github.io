@@ -52,7 +52,7 @@ body {
 
 /* RE-ENGINEERED MISSION LINE: Maximum visibility shield */
 .mission-statement h2 {
-F    font-size: 2.6rem;
+    font-size: 2.6rem;
     font-weight: 900;
     color: #ffffff;
     background-color: #e84118;
@@ -237,12 +237,6 @@ footer { text-align: center; padding: 50px 0; color: #718093; font-size: 0.9rem;
     font-size: 2.9rem;
     font-weight: 700;
     margin: 15px 0 25px 0;
-}
-
-.technical-header .hero-logo {
-    max-width: 100%;
-    width: 600px;
-    margin-bottom: 25px;
 }
 
 /* Action Buttons */
