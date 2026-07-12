@@ -272,3 +272,12 @@ footer { text-align: center; padding: 50px 0; color: #718093; font-size: 0.9rem;
 .site-nav {
     padding: 25px 0; 
 }
+/* Tighten the gap under the logo */
+.hero-logo {
+    margin-bottom: 0px !important;
+}
+
+/* Tighten the gap above the first line of text */
+.subtitle {
+    margin-top: 0px !important;
+}
