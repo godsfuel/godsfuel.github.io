@@ -44,25 +44,26 @@ body {
     letter-spacing: 0.5px;
 }
 
-.stat-highlight { font-size: 1.8rem; font-weight: 800; margin-bottom: 4px; color: #1f2a44; }
-.stat-location { font-size: 1.3rem; font-weight: 700; margin-top: 15px; color: #f1c40f; }
+.stat-highlight { font-size: 2.1rem; font-weight: 900; margin-bottom: 4px; color: #1f2a44; }
+.stat-location { font-size: 1.65rem; font-weight: 700; margin-top: 15px; color: #f1c40f; }
 .stat-time { font-size: 1.6rem; font-weight: 800; color: #f1c40f; margin-bottom: 4px; }
 .stat-cause { font-size: 2.2rem; font-weight: 900; color: #e84118; margin-bottom: 25px; letter-spacing: 1px; }
 .suffering-note { font-size: 1.15rem; font-style: italic; color: #1f2a44; margin-bottom: 35px; }
 
 /* RE-ENGINEERED MISSION LINE: Maximum visibility shield */
 .mission-statement h2 {
-    font-size: 2.2rem;
+    font-size: 2.6rem;
     font-weight: 900;
     color: #ffffff;                     /* Crisp white text */
     background-color: #e84118;          /* High-impact safety orange blast background */
-    padding: 14px 40px;
-    border-radius: 6px;
+    padding: 18px 50px;
+    border-radius: 8px;
     display: inline-block;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Heavy drop shadow to pull it off the background page */
-    border: 2px solid #ffffff;          /* White bounding border to trap the eye */
-    letter-spacing: 0.5px;
-    margin-top: 10px;
+    box-shadow: 0 8px 25px rgba(232, 65, 24, 0.45); /* Heavy drop shadow to pull it off the background page */
+    border: 3px solid #ffffff;          /* White bounding border to trap the eye */
+    letter-spacing: 1px;
+	margin: 35px auto 10px auto;
+   	text-transform: uppercase;
 }
 
 /* Site Directory Submenu Navigation Bar */
@@ -209,7 +210,7 @@ footer { text-align: center; padding: 50px 0; color: #718093; font-size: 0.9rem;
 }
 /* Logo Styling */
 .hero-logo {
-    max-width: 85%;           /* Makes it about three-quarters of the container width */
+    max-width: 100%;           /* Makes it about three-quarters of the container width */
     height: auto;             /* Keeps the aspect ratio */
     display: block;
     margin: 0 auto 30px auto; /* Centers it and adds some space below */
