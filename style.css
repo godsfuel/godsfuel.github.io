@@ -44,7 +44,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-.stat-highlight { font-size: 1.4rem; font-weight: 600; margin-bottom: 4px; color: #1f2a44; }
+.stat-highlight { font-size: 1.8rem; font-weight: 800; margin-bottom: 4px; color: #1f2a44; }
 .stat-location { font-size: 1.3rem; font-weight: 700; margin-top: 15px; color: #f1c40f; }
 .stat-time { font-size: 1.6rem; font-weight: 800; color: #f1c40f; margin-bottom: 4px; }
 .stat-cause { font-size: 2.2rem; font-weight: 900; color: #e84118; margin-bottom: 25px; letter-spacing: 1px; }
@@ -209,7 +209,7 @@ footer { text-align: center; padding: 50px 0; color: #718093; font-size: 0.9rem;
 }
 /* Logo Styling */
 .hero-logo {
-    max-width: 75%;           /* Makes it about three-quarters of the container width */
+    max-width: 85%;           /* Makes it about three-quarters of the container width */
     height: auto;             /* Keeps the aspect ratio */
     display: block;
     margin: 0 auto 30px auto; /* Centers it and adds some space below */
