@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOUNCE™ - Private Test Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container" style="max-width: 600px; margin-top: 50px;">
+        <section class="card standard-card">
+            <h2>Smart Media File Test Portal</h2>
+            <p>Enter your test hardware seed below to trigger the local server pipeline at <code>C:\spooky</code>.</p>
+            
+            <!-- Form pointing directly to your active Ngrok tunnel -->
+            <form id="testOrderForm">
+                <div style="margin-bottom: 15px;">
+                    <label for="vendor_seed" style="display: block; font-weight: bold; margin-bottom: 5px;">Hardware Seed (Number):</label>
+                    <input type="number" id="vendor_seed" name="vendor_seed" required style="width: 100%; padding: 8px; font-size: 16px;">
+                </div>
+                <button type="submit" class="action-button" style="width: 100%; padding: 10px; cursor: pointer;">Generate Smart Media File</button>
+            </form>
+
+            <div id="responseMessage" style="margin-top: 20px; font-weight: bold;"></div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('testOrderForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const seedValue = document.getElementById('vendor_seed').value;
+            const messageDiv = document.getElementById('responseMessage');
+            
+            messageDiv.style.color = "#333";
+            messageDiv.innerText = "Transmitting order through Ngrok tunnel...";
+
+            try {
+                // Replace this URL with your active Ngrok forwarding URL ending in /process-and-dispatch
+                const ngrokUrl = "https://YOUR-NGROK-ID.ngrok-free.app/process-and-dispatch";
+
+                const response = await fetch(ngrokUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        file_path: "C:/spooky/master_media_file.mp4",
+                        vendor_seed: parseInt(seedValue),
+                        destination_url: "https://bounceairbags.com/callback"
+                    })
+                });
+
+                if (response.ok) {
+                    messageDiv.style.color = "green";
+                    messageDiv.innerText = "Success! Smart Media File generated on your local spooky server.";
+                } else {
+                    messageDiv.style.color = "red";
+                    messageDiv.innerText = "Error: Server returned status " + response.status;
+                }
+            } catch (error) {
+                messageDiv.style.color = "red";
+                messageDiv.innerText = "Connection failed. Check if your Ngrok tunnel and local server are running!";
+            }
+        });
+    </script>
+</body>
+</html>
