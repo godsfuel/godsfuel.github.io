@@ -1,8 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spooky Secure Catalog Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            margin-top: 40px;
+        }
+        h1 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p.subtitle {
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #cfcfcf;
+        }
+        select, button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #2a2a2a;
+            color: #ffffff;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #00bcd4;
+            color: #121212;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #00acc1;
+        }
+        #status-box {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #252525;
+            border: 1px solid #333;
+            font-family: monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Spooky Secure Catalog Portal</h1>
+    <p class="subtitle">Select a track from your catalog. Purchasing initiates an automated device handshake to lock the file exclusively to your hardware.</p>
+
+    <div class="form-group">
+        <label for="song-select">Catalog Selection:</label>
+        <select id="song-select">
+            <option value="Hell In A Bucket">Hell In A Bucket</option>
+            <option value="I Know You Rider">I Know You Rider</option>
+            <option value="Let it Grow">Let it Grow</option>
+            <option value="Man Smart (Woman Smarter)">Man Smart (Woman Smarter)</option>
+            <option value="Peggy-O">Peggy-O</option>
+            <option value="Rubin & Cherise">Rubin & Cherise</option>
+            <option value="Sugaree">Sugaree</option>
+            <option value="Truckin">Truckin</option>
+            <option value="Tuning">Tuning</option>
+            <option value="Walkin' Blues">Walkin' Blues</option>
+        </select>
+    </div>
+
+    <button id="pay-btn">Pay & Download Secure File</button>
+
+    <div id="status-box"></div>
+</div>
+
 <script>
-    // Explicitly point the live site to your active Cloudflare tunnel backend
     const API_BASE = "https://auto-telephony-symantec-trains.trycloudflare.com";
 
-    // Generate a lightweight local hardware seed for browser fingerprint testing
     function getDeviceFingerprint() {
         let canvas = document.createElement('canvas');
         let ctx = canvas.getContext('2d');
@@ -63,3 +170,6 @@
         }
     });
 </script>
+
+</body>
+</html>
