@@ -3,22 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOUNCE™ - Private Test Portal</title>
+    <title>BOUNCE™ - Secure Catalog Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="container" style="max-width: 600px; margin-top: 50px;">
         <section class="card standard-card">
-            <h2>Smart Media File Test Portal</h2>
-            <p>Enter your test hardware seed below to trigger the local server pipeline at <code>C:\spooky</code>.</p>
+            <h2>Secure Catalog Portal</h2>
+            <p>Select a track from your catalog. Purchasing initiates an automated device handshake to lock the file exclusively to your hardware.</p>
             
-            <!-- Form pointing directly to your active Ngrok tunnel -->
-            <form id="testOrderForm">
+            <form id="catalogOrderForm">
+                <!-- Catalog Selection -->
                 <div style="margin-bottom: 15px;">
-                    <label for="vendor_seed" style="display: block; font-weight: bold; margin-bottom: 5px;">Hardware Seed (Number):</label>
-                    <input type="number" id="vendor_seed" name="vendor_seed" required style="width: 100%; padding: 8px; font-size: 16px;">
+                    <label for="selected_song" style="display: block; font-weight: bold; margin-bottom: 5px;">Choose Grateful Dead Track:</label>
+                    <select id="selected_song" name="selected_song" style="width: 100%; padding: 8px; font-size: 16px;">
+                        <option value="catalog/song_01.mp3">Track 1: Live Live Audio</option>
+                        <option value="catalog/song_02.mp3">Track 2: Live Live Audio</option>
+                        <option value="catalog/song_03.mp3">Track 3: Live Live Audio</option>
+                        <option value="catalog/song_04.mp3">Track 4: Live Live Audio</option>
+                        <option value="catalog/song_05.mp3">Track 5: Live Live Audio</option>
+                        <option value="catalog/song_06.mp3">Track 6: Live Live Audio</option>
+                        <option value="catalog/song_07.mp3">Track 7: Live Live Audio</option>
+                        <option value="catalog/song_08.mp3">Track 8: Live Live Audio</option>
+                        <option value="catalog/song_09.mp3">Track 9: Live Live Audio</option>
+                        <option value="catalog/song_10.mp3">Track 10: Live Live Audio</option>
+                    </select>
                 </div>
-                <button type="submit" class="action-button" style="width: 100%; padding: 10px; cursor: pointer;">Generate Smart Media File</button>
+
+                <!-- Hardware Seed Handshake Status -->
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; font-weight: bold; margin-bottom: 5px;">Device Fingerprint Status:</label>
+                    <input type="text" id="hardware_seed_display" readonly style="width: 100%; padding: 8px; font-size: 14px; background: #eee; color: #555;">
+                </div>
+
+                <button type="submit" class="action-button" style="width: 100%; padding: 12px; cursor: pointer; background: #27ae60; color: white; font-weight: bold;">Pay & Download Secure File</button>
             </form>
 
             <div id="responseMessage" style="margin-top: 20px; font-weight: bold;"></div>
@@ -26,16 +44,32 @@
     </main>
 
     <script>
-        document.getElementById('testOrderForm').addEventListener('submit', async function(e) {
+        // Client-side hardware handshake generation
+        function generateHardwareSeed() {
+            const navigatorInfo = navigator.userAgent + navigator.language + screen.width + screen.height;
+            let hash = 0;
+            for (let i = 0; i < navigatorInfo.length; i++) {
+                const char = navigatorInfo.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash |= 0;
+            }
+            return Math.abs(hash);
+        }
+
+        const userSeed = generateHardwareSeed();
+        document.getElementById('hardware_seed_display').value = "Secured & Handshaked (Seed: " + userSeed + ")";
+
+        // Handle form submission, tunnel transmission, and return delivery
+        document.getElementById('catalogOrderForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const seedValue = document.getElementById('vendor_seed').value;
+            const chosenSong = document.getElementById('selected_song').value;
             const messageDiv = document.getElementById('responseMessage');
             
             messageDiv.style.color = "#333";
-            messageDiv.innerText = "Transmitting order through Ngrok tunnel...";
+            messageDiv.innerText = "Processing payment and handshaking with local server...";
 
             try {
-                // Replace this URL with your active Ngrok forwarding URL ending in /process-and-dispatch
+                // Replace with your active Ngrok forwarding URL ending in /process-and-dispatch
                 const ngrokUrl = "https://YOUR-NGROK-ID.ngrok-free.app/process-and-dispatch";
 
                 const response = await fetch(ngrokUrl, {
@@ -44,22 +78,31 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        file_path: "C:/spooky/master_media_file.mp4",
-                        vendor_seed: parseInt(seedValue),
-                        destination_url: "https://bounceairbags.com/callback"
+                        file_path: chosenSong,
+                        vendor_seed: userSeed
                     })
                 });
 
                 if (response.ok) {
                     messageDiv.style.color = "green";
-                    messageDiv.innerText = "Success! Smart Media File generated on your local spooky server.";
+                    messageDiv.innerText = "Success! File compiled for your hardware. Preparing download...";
+                    
+                    // Automatically trigger file download from server response blob
+                    const blob = await response.blob();
+                    const downloadUrl = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = downloadUrl;
+                    a.download = "Secure_Smart_Media_File.exe";
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
                 } else {
                     messageDiv.style.color = "red";
                     messageDiv.innerText = "Error: Server returned status " + response.status;
                 }
             } catch (error) {
                 messageDiv.style.color = "red";
-                messageDiv.innerText = "Connection failed. Check if your Ngrok tunnel and local server are running!";
+                messageDiv.innerText = "Connection failed. Check your Ngrok tunnel!";
             }
         });
     </script>
