@@ -3,108 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOUNCE™ - Secure Catalog Portal</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Spooky Automated Pipeline - Smart Media Edition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        h1 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p.subtitle {
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #cfcfcf;
+        }
+        select, button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #2a2a2a;
+            color: #ffffff;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        select:focus {
+            border-color: #00bcd4;
+            outline: none;
+        }
+        button {
+            background-color: #00bcd4;
+            color: #121212;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #00acc1;
+        }
+        #status-box {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #252525;
+            border: 1px solid #333;
+            font-family: monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <main class="container" style="max-width: 600px; margin-top: 50px;">
-        <section class="card standard-card">
-            <h2>Secure Catalog Portal</h2>
-            <p>Select a track from your catalog. Purchasing initiates an automated device handshake to lock the file exclusively to your hardware.</p>
-            
-            <form id="catalogOrderForm">
-                <!-- Catalog Selection -->
-                <div style="margin-bottom: 15px;">
-                    <label for="selected_song" style="display: block; font-weight: bold; margin-bottom: 5px;">Choose Grateful Dead Track:</label>
-                    <select id="selected_song" name="selected_song" style="width: 100%; padding: 8px; font-size: 16px;">
-                        <option value="catalog/song_01.mp3">Track 1: Live Live Audio</option>
-                        <option value="catalog/song_02.mp3">Track 2: Live Live Audio</option>
-                        <option value="catalog/song_03.mp3">Track 3: Live Live Audio</option>
-                        <option value="catalog/song_04.mp3">Track 4: Live Live Audio</option>
-                        <option value="catalog/song_05.mp3">Track 5: Live Live Audio</option>
-                        <option value="catalog/song_06.mp3">Track 6: Live Live Audio</option>
-                        <option value="catalog/song_07.mp3">Track 7: Live Live Audio</option>
-                        <option value="catalog/song_08.mp3">Track 8: Live Live Audio</option>
-                        <option value="catalog/song_09.mp3">Track 9: Live Live Audio</option>
-                        <option value="catalog/song_10.mp3">Track 10: Live Live Audio</option>
-                    </select>
-                </div>
 
-                <!-- Hardware Seed Handshake Status -->
-                <div style="margin-bottom: 15px;">
-                    <label style="display: block; font-weight: bold; margin-bottom: 5px;">Device Fingerprint Status:</label>
-                    <input type="text" id="hardware_seed_display" readonly style="width: 100%; padding: 8px; font-size: 14px; background: #eee; color: #555;">
-                </div>
+<div class="container">
+    <h1>Spooky Secure Catalog Portal</h1>
+    <p class="subtitle">Select a track from your catalog. Purchasing initiates an automated device handshake to lock the file exclusively to your hardware.</p>
 
-                <button type="submit" class="action-button" style="width: 100%; padding: 12px; cursor: pointer; background: #27ae60; color: white; font-weight: bold;">Pay & Download Secure File</button>
-            </form>
+    <div class="form-group">
+        <label for="song-select">Catalog Selection:</label>
+        <select id="song-select">
+            <option value="Hell In A Bucket">Hell In A Bucket</option>
+            <option value="I Know You Rider">I Know You Rider</option>
+            <option value="Let it Grow">Let it Grow</option>
+            <option value="Man Smart (Woman Smarter)">Man Smart (Woman Smarter)</option>
+            <option value="Peggy-O">Peggy-O</option>
+            <option value="Rubin & Cherise">Rubin & Cherise</option>
+            <option value="Sugaree">Sugaree</option>
+            <option value="Truckin">Truckin</option>
+            <option value="Tuning">Tuning</option>
+            <option value="Walkin' Blues">Walkin' Blues</option>
+        </select>
+    </div>
 
-            <div id="responseMessage" style="margin-top: 20px; font-weight: bold;"></div>
-        </section>
-    </main>
+    <button id="pay-btn">Pay & Download Secure File</button>
 
-    <script>
-        // Client-side hardware handshake generation
-        function generateHardwareSeed() {
-            const navigatorInfo = navigator.userAgent + navigator.language + screen.width + screen.height;
-            let hash = 0;
-            for (let i = 0; i < navigatorInfo.length; i++) {
-                const char = navigatorInfo.charCodeAt(i);
-                hash = ((hash << 5) - hash) + char;
-                hash |= 0;
+    <div id="status-box"></div>
+</div>
+
+<script>
+    // Automatically uses the current Cloudflare tunnel host or fallback to local
+    const API_BASE = window.location.origin;
+
+    // Generate a lightweight local hardware seed for browser fingerprint testing
+    function getDeviceFingerprint() {
+        let canvas = document.createElement('canvas');
+        let ctx = canvas.getContext('2d');
+        ctx.textBaseline = "top";
+        ctx.font = "14px 'Arial'";
+        ctx.fillText("SpookySecureHardwareFingerprint", 2, 2);
+        return btoa(canvas.toDataURL()).slice(0, 32);
+    }
+
+    document.getElementById('pay-btn').addEventListener('click', async () => {
+        const selectedSong = document.getElementById('song-select').value;
+        const deviceId = getDeviceFingerprint();
+        const statusBox = document.getElementById('status-box');
+
+        statusBox.style.display = 'block';
+        statusBox.style.color = '#ffeb3b';
+        statusBox.textContent = "Initiating secure device handshake and packaging...";
+
+        try {
+            const response = await fetch(`${API_BASE}/api/process-order`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    song_id: selectedSong,
+                    device_id: deviceId
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                statusBox.style.color = '#4caf50';
+                statusBox.textContent = `SUCCESS!\nTrack: ${data.song_id}\nHardware ID: ${deviceId}\nStatus: ${data.message}`;
+            } else {
+                statusBox.style.color = '#f44336';
+                statusBox.textContent = `Server Error: ${data.detail || 'Unknown error'}`;
             }
-            return Math.abs(hash);
+        } catch (err) {
+            statusBox.style.color = '#f44336';
+            statusBox.textContent = `Connection failed. Check your Cloudflare tunnel terminal window.\nDetails: ${err.message}`;
         }
+    });
+</script>
 
-        const userSeed = generateHardwareSeed();
-        document.getElementById('hardware_seed_display').value = "Secured & Handshaked (Seed: " + userSeed + ")";
-
-        // Handle form submission, tunnel transmission, and return delivery
-        document.getElementById('catalogOrderForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const chosenSong = document.getElementById('selected_song').value;
-            const messageDiv = document.getElementById('responseMessage');
-            
-            messageDiv.style.color = "#333";
-            messageDiv.innerText = "Processing payment and handshaking with local server...";
-
-            try {
-                // Replace with your active Ngrok forwarding URL ending in /process-and-dispatch
-                const ngrokUrl = "https://engorge-settle-reunion.ngrok-free.dev/process-and-dispatch";
-
-                const response = await fetch(ngrokUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        file_path: chosenSong,
-                        vendor_seed: userSeed
-                    })
-                });
-
-                if (response.ok) {
-                    messageDiv.style.color = "green";
-                    messageDiv.innerText = "Success! File compiled for your hardware. Preparing download...";
-                    
-                    // Automatically trigger file download from server response blob
-                    const blob = await response.blob();
-                    const downloadUrl = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = downloadUrl;
-                    a.download = "Secure_Smart_Media_File.exe";
-                    document.body.appendChild(a);
-                    a.click();
-                    a.remove();
-                } else {
-                    messageDiv.style.color = "red";
-                    messageDiv.innerText = "Error: Server returned status " + response.status;
-                }
-            } catch (error) {
-                messageDiv.style.color = "red";
-                messageDiv.innerText = "Connection failed. Check your Ngrok tunnel!";
-            }
-        });
-    </script>
 </body>
 </html>
