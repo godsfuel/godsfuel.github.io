@@ -1,6 +1,8 @@
 <script>
-    const API_BASE = window.location.origin;
+    // Explicitly point the live site to your active Cloudflare tunnel backend
+    const API_BASE = "https://auto-telephony-symantec-trains.trycloudflare.com";
 
+    // Generate a lightweight local hardware seed for browser fingerprint testing
     function getDeviceFingerprint() {
         let canvas = document.createElement('canvas');
         let ctx = canvas.getContext('2d');
@@ -32,7 +34,6 @@
             });
 
             if (response.ok) {
-                // Handle the incoming file download directly
                 const blob = await response.blob();
                 const disposition = response.headers.get('content-disposition');
                 let filename = `${selectedSong}_locked.exe`;
