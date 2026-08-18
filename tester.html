@@ -3,151 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spooky Secure Catalog Portal</title>
+    <title>Bounce Safety Systems - Smart Media Portal</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .container {
+            background-color: #f4f6f9;
+            color: #333;
             max-width: 600px;
-            width: 100%;
-            background: #1e1e1e;
-            padding: 30px;
+            margin: 40px auto;
+            padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         h1 {
-            font-size: 1.5rem;
-            color: #ffffff;
+            color: #1a365d;
             text-align: center;
-            margin-bottom: 10px;
-        }
-        p.subtitle {
-            text-align: center;
-            color: #a0a0a0;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
         }
         .form-group {
             margin-bottom: 20px;
         }
         label {
             display: block;
-            margin-bottom: 8px;
             font-weight: bold;
-            color: #cfcfcf;
+            margin-bottom: 8px;
         }
-        select, button {
+        select, input[type="text"] {
             width: 100%;
-            padding: 12px;
-            border-radius: 5px;
-            border: 1px solid #444;
-            background-color: #2a2a2a;
-            color: #ffffff;
-            font-size: 1rem;
-            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
         }
         button {
-            background-color: #00bcd4;
-            color: #121212;
-            font-weight: bold;
+            background-color: #2b6cb0;
+            color: white;
             border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            border-radius: 4px;
             cursor: pointer;
-            margin-top: 10px;
+            transition: background-color 0.2s;
         }
         button:hover {
-            background-color: #00acc1;
+            background-color: #2c5282;
         }
-        #status-box {
+        #status {
             margin-top: 20px;
             padding: 15px;
-            border-radius: 5px;
-            background-color: #252525;
-            border: 1px solid #333;
-            font-family: monospace;
-            font-size: 0.85rem;
-            white-space: pre-wrap;
-            word-break: break-all;
+            border-radius: 4px;
             display: none;
+            font-size: 14px;
+            white-space: pre-wrap;
+        }
+        .success {
+            background-color: #c6f6d5;
+            color: #22543d;
+            border: 1px for #9ae6b4;
+        }
+        .error {
+            background-color: #fed7d7;
+            color: #742a2a;
+            border: 1px solid #feb2b2;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Spooky Secure Catalog Portal</h1>
-    <p class="subtitle">Select a track from your catalog. Purchasing initiates an automated device handshake to lock the file exclusively to your hardware.</p>
+    <h1>Bounce Safety Systems</h1>
+    <p style="text-align: center; color: #665;">Smart Media Secure Download Portal</p>
 
     <div class="form-group">
-        <label for="song-select">Catalog Selection:</label>
-        <select id="song-select">
-            <option value="Hell In A Bucket">Hell In A Bucket</option>
-            <option value="I Know You Rider">I Know You Rider</option>
-            <option value="Let it Grow">Let it Grow</option>
-            <option value="Man Smart (Woman Smarter)">Man Smart (Woman Smarter)</option>
-            <option value="Peggy-O">Peggy-O</option>
-            <option value="Rubin & Cherise">Rubin & Cherise</option>
-            <option value="Sugaree">Sugaree</option>
+        <label for="songSelect">Select Track:</label>
+        <select id="songSelect">
+            <option value="Hell in a Bucket">Hell in a Bucket</option>
             <option value="Truckin">Truckin</option>
-            <option value="Tuning">Tuning</option>
-            <option value="Walkin' Blues">Walkin' Blues</option>
+            <option value="Touch of Grey">Touch of Grey</option>
         </select>
     </div>
 
-    <button id="pay-btn">Pay & Download Secure File</button>
+    <div class="form-group">
+        <label for="deviceId">Hardware Device ID:</label>
+        <input type="text" id="deviceId" value="BOUNCE-HW-99182374">
+    </div>
 
-    <div id="status-box"></div>
-</div>
+    <button id="downloadBtn">Pay & Download Secure File</button>
 
-<script>
-    const API_BASE = "https://auto-telephony-symantec-trains.trycloudflare.com";
+    <div id="status"></div>
 
-    function getDeviceFingerprint() {
-        let canvas = document.createElement('canvas');
-        let ctx = canvas.getContext('2d');
-        ctx.textBaseline = "top";
-        ctx.font = "14px 'Arial'";
-        ctx.fillText("SpookySecureHardwareFingerprint", 2, 2);
-        return btoa(canvas.toDataURL()).slice(0, 32);
-    }
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', async () => {
+            const songId = document.getElementById('songSelect').value;
+            const deviceId = document.getElementById('deviceId').value;
+            const statusDiv = document.getElementById('status');
 
-    document.getElementById('pay-btn').addEventListener('click', async () => {
-        const selectedSong = document.getElementById('song-select').value;
-        const deviceId = getDeviceFingerprint();
-        const statusBox = document.getElementById('status-box');
+            statusDiv.style.display = 'block';
+            statusDiv.className = '';
+            statusDiv.textContent = 'Initiating secure device handshake and packaging Smart MP3...';
 
-        statusBox.style.display = 'block';
-        statusBox.style.color = '#ffeb3b';
-        statusBox.textContent = "Initiating secure device handshake and packaging...";
+            try {
+                // Dynamically detects whether it's running locally or via Cloudflare tunnel
+                const response = await fetch('/api/process-order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ song_id: songId, device_id: deviceId })
+                });
 
-        try {
-            const response = await fetch(`${API_BASE}/api/process-order`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    song_id: selectedSong,
-                    device_id: deviceId
-                })
-            });
-
-            if (response.ok) {
-                const blob = await response.blob();
-                const disposition = response.headers.get('content-disposition');
-                let filename = `${selectedSong}_locked.exe`;
-                if (disposition && disposition.includes('filename=')) {
-                    filename = disposition.split('filename=')[1].replace(/["']/g, '');
+                if (!response.ok) {
+                    const errData = await response.json();
+                    throw new Error(errData.detail || 'Server error during processing.');
                 }
 
+                // Extract filename from header or fallback cleanly to .mp3
+                const disposition = response.headers.get('content-disposition');
+                let filename = `${songId.replace(/\s+/g, '_')}_smart.mp3`;
+                if (disposition && disposition.indexOf('filename=') !== -1) {
+                    let match = disposition.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/);
+                    if (match && match[1]) {
+                        filename = match[1].replace(/['"]/g, '');
+                    }
+                }
+
+                const blob = await response.blob();
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
@@ -157,19 +137,15 @@
                 a.remove();
                 window.URL.revokeObjectURL(url);
 
-                statusBox.style.color = '#4caf50';
-                statusBox.textContent = `SUCCESS!\nTrack: ${selectedSong}\nHardware ID: ${deviceId}\nFile downloaded successfully!`;
-            } else {
-                const data = await response.json();
-                statusBox.style.color = '#f44336';
-                statusBox.textContent = `Server Error: ${data.detail || 'Unknown error'}`;
+                statusDiv.className = 'success';
+                statusDiv.textContent = `Success!\nTrack: ${songId}\nHardware ID: ${deviceId}\nSmart MP3 downloaded successfully!`;
+
+            } catch (error) {
+                statusDiv.className = 'error';
+                statusDiv.textContent = `Connection Error: ${error.message}`;
             }
-        } catch (err) {
-            statusBox.style.color = '#f44336';
-            statusBox.textContent = `Download triggered or connection error.\nDetails: ${err.message}`;
-        }
-    });
-</script>
+        });
+    </script>
 
 </body>
 </html>
