@@ -79,7 +79,14 @@
         <select id="songSelect">
             <option value="Hell in a Bucket">Hell in a Bucket</option>
             <option value="Truckin">Truckin</option>
-            <option value="Touch of Grey">Touch of Grey</option>
+            <option value="I Know You Rider">I Know You Rider</option>
+            <option value="Let it Grow">Let it Grow</option>
+		   <option value="Man Smart (Woman Smarter)">Man Smart (Woman Smarter)</option>
+		   <option value="Peggy-O">Peggy-O</option>
+		   <option value="Rubin & Cherise">Rubin & Cherise</option>
+		   <option value="Sugaree">Sugaree</option>
+		   <option value="Tuning">Tuning</option>
+		   <option value="Walkin' Blues">Walkin' Blues</option>		
         </select>
     </div>
 
@@ -101,10 +108,8 @@
             statusDiv.textContent = 'Initiating secure device handshake and packaging Smart MP3...';
 
             try {
-                // Automatically route through Cloudflare tunnel when live, or localhost when testing locally
-                const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-                    ? 'http://127.0.0.1:8000/api/process-order' 
-                    : 'https://auto-telephony-symantec-trains.trycloudflare.com/api/process-order';
+                // Use a relative path so it automatically binds to localhost or whichever active Cloudflare tunnel URL is loaded
+                const apiUrl = '/api/process-order';
 
                 const response = await fetch(apiUrl, {
                     method: 'POST',
