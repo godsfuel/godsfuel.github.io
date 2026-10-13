@@ -39,10 +39,13 @@
     </div>
 
     <script>
-        // Load available tracks from the local Spooky/Vault engine on page load
+        // Use absolute URL targeting the live Spooky backend engine on spookyfied.com
+        const SPOOKY_BACKEND = "https://spookyfied.com";
+
+        // Load available tracks from the Spooky/Vault engine on page load
         window.onload = async function() {
             try {
-                const res = await fetch('http://127.0.0.1:5000/api/tracks');
+                const res = await fetch(`${SPOOKY_BACKEND}/api/tracks`);
                 const data = await res.json();
                 const container = document.getElementById('trackContainer');
                 container.innerHTML = '';
@@ -59,7 +62,7 @@
                     container.appendChild(div);
                 });
             } catch (err) {
-                document.getElementById('trackContainer').innerHTML = '<div style="color:red;">Error connecting to local master vault API. Ensure backend is running.</div>';
+                document.getElementById('trackContainer').innerHTML = '<div style="color:red;">Error connecting to master vault API. Ensure backend is running.</div>';
             }
         }
 
@@ -70,20 +73,21 @@
             downloadContainer.innerHTML = '';
 
             const selectedTracks = Array.from(document.querySelectorAll('input[name="tracks"]:checked'))
-                                          .map(el => el.value);
+                                        .map(el => el.value);
 
             if (selectedTracks.length === 0) {
                 alert("Please select at least one track.");
                 return;
             }
 
-            logBox.textContent = "Verifying customer hardware anchor (cache.dat)...";
+            logBox.textContent = "Verifying customer hardware anchor...";
 
             try {
-                const fulfillRes = await fetch('http://127.0.0.1:5000/api/fulfill-order', {
+                const fulfillRes = await fetch(`${SPOOKY_BACKEND}/api/fulfill-order`, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ email: email, tracks: selectedTracks })
+                    body: JSON.stringify({ email: email, tracks: selectedTracks }),
+                    credentials: 'include'
                 });
                 
                 const result = await fulfillRes.json();
