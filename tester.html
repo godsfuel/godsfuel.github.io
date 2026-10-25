@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RIX Records - Secure Audio Storefront</title>
+    <title>SPookY Records - Secure Audio Storefront</title>
     <style>
         body { font-family: Arial, sans-serif; background: #121212; color: #e0e0e0; max-width: 700px; margin: 40px auto; padding: 30px; border-radius: 8px; border: 1px solid #333; }
         h2 { color: #ffb703; }
@@ -16,20 +16,20 @@
     </style>
 </head>
 <body>
-    <h2>RIX Records Secure Catalog</h2>
-    <p>Simulating independent artist master distribution secured by Spooky Sovereign.</p>
+    <h2>SPookY Records Secure Catalog</h2>
+    <p>Simulating independent artist master distribution secured by SPookY Sovereign.</p>
 
     <div class="product-box">
         <h3>Master Catalog Inventory</h3>
         <label>Customer Email:</label>
-        <input type="email" id="customerEmail" value="artist@rixrecords.com" style="width:100%; padding:10px; margin-top:5px; background:#2a2a2a; color:#fff; border:1px solid #555; box-sizing: border-box;">
+        <input type="email" id="customerEmail" value="artist@SPookYrecords.com" style="width:100%; padding:10px; margin-top:5px; background:#2a2a2a; color:#fff; border:1px solid #555; box-sizing: border-box;">
         
         <p style="margin-top: 15px; margin-bottom: 5px; font-weight: bold;">Select Master Tracks:</p>
         <div class="track-list" id="trackContainer">
             Connecting to master vault...
         </div>
         
-        <button onclick="initiateOrder()">Purchase & Package via Spooky</button>
+        <button onclick="initiateOrder()">Purchase & Package via SPookY</button>
     </div>
 
     <div class="product-box" style="margin-top: 20px;">
@@ -39,10 +39,10 @@
     </div>
 
     <script>
-        // Use absolute URL targeting the live Spooky backend engine on spookyfied.com
+        // Use absolute URL targeting the live SPookY backend engine on spookyfied.com
         const SPOOKY_BACKEND = "https://spookyfied.com";
 
-        // Load available tracks from the Spooky/Vault engine on page load
+        // Load available tracks from the SPookY/Vault engine on page load
         window.onload = async function() {
             try {
                 const res = await fetch(`${SPOOKY_BACKEND}/api/tracks`);
